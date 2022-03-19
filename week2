@@ -1,0 +1,35 @@
+Final Project Week 2 Summary
+
+Test Plan and Results:
+    The basis for these unit tests are to ensure the code is working as expected during development.
+    So the unit tests will first be checking proper operation of each individual task. After I know
+    all the tasks are individually working correctly, I will test the whether or not the 2 tasks
+    share the proper data and still function properly. Then I will move to testing more tasks together
+    until the whole system is working properly
+    
+    Unit Tests:
+    1) Use an EMF_ASSERT to check the values of the button data structure when pressing button0, button1,
+    and both. The values in the data structure that will be checked are the values of button0 and button1,
+    and the ammount of times each have been pushed. This test will be in the EVEN adn ODD IRQ handlers.
+    2) Use an EMF_ASSERT to check the values of the platform data structure after touching each channel
+    individually and touching one channel on either side. We will be checking the value of the direction, 
+    velocity, and position of the platform.
+    3) I will create a function that checks the physics calculation in the physics task when the HM 
+    is in free fall and when is hits the platform with and without the shield. (the shield will only
+    be simulated, not activated by the button.
+    This function will also be used to test the functionality of the physics task in conjunction with the
+    platform task and button inputs later on.
+    4) Visual Test: Simulate the HM free falling on the LCD display without using any information from the 
+    other tasks
+    5) Visual Test: Using shared data from the platform task. Display the platform as you touch different 
+    channels on the capsense sensor. 
+    6) Using the function from test 3, we will test the phsyics outputs using inputs from the button, then 
+    the slider, then both.
+    7) Visual Test: Since the physics task is working now, check to see if the LCD is displaying the proper 
+    image after the HM hits the platfomr. 
+    8) Use an EFM_ASSERT to check a new HM will be dropped once the origianl one has been bounced off the screen.
+    9) Use an EFM_ASSERT to check if the laser will be activated by pressing button1 and a new HM will be dropped.
+    10) Check to see if the LED0 is correctly displaying the PWM.
+    11) Check to see if the LED1 is correctly displaying the PWM.
+    
+ 
