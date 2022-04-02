@@ -1,0 +1,63 @@
+Final Project Week 3 Summary
+
+Test Plan and Results:
+    The basis for these unit tests are to ensure the code is working as expected during development.
+    So the unit tests will first be checking proper operation of each individual task. After I know
+    all the tasks are individually working correctly, I will test the whether or not the 2 tasks
+    share the proper data and still function properly. Then I will move to testing more tasks together
+    until the whole system is working properly
+    
+    Unit Tests:
+    1) [100% Pass] Use an EMF_ASSERT to check the values of the button data structure when pressing button0, button1,
+    and both. The values in the data structure that will be checked are the values of button0 and button1,
+    and the ammount of times each have been pushed. This test will be in the EVEN adn ODD IRQ handlers.
+    2) [40% pass: board malfunction] Use an EMF_ASSERT to check the values of the platform data structure after touching each channel
+    individually and touching one channel on either side. We will be checking the value of the direction, 
+    velocity, and position of the platform.
+    3) [NotRun] I will create a function that checks the physics calculation in the physics task when the HM 
+    is in free fall and when is hits the platform with and without the shield. (the shield will only
+    be simulated, not activated by the button.
+    This function will also be used to test the functionality of the physics task in conjunction with the
+    platform task and button inputs later on.
+    4) [NotRun] Visual Test: Simulate the HM free falling on the LCD display without using any information from the 
+    other tasks
+    5) [NotRun] Visual Test: Using shared data from the platform task. Display the platform as you touch different 
+    channels on the capsense sensor. 
+    6) [NotRun] Using the function from test 3, we will test the phsyics outputs using inputs from the button, then 
+    the slider, then both.
+    7) [NotRun] Visual Test: Since the physics task is working now, check to see if the LCD is displaying the proper 
+    image after the HM hits the platfomr. 
+    8) [NotRun] Use an EFM_ASSERT to check a new HM will be dropped once the origianl one has been bounced off the screen.
+    9) [NotRun] Use an EFM_ASSERT to check if the laser will be activated by pressing button1 and a new HM will be dropped.
+    10) [NotRun] Check to see if the LED0 is correctly displaying the PWM.
+    11) [NotRun] Check to see if the LED1 is correctly displaying the PWM.
+    
+Progress of Project week 3:
+    At the end of week 3, the skelaton of the project is completed. The addition from week 2 was completing the inter task communication
+    as well as the button task and the platform task. This means the development of the physics is next in the queue.
+Summary of effort:
+    My current progress puts the project at 35-40% done. The percentage is a little behind schedule due to unavoidable 
+    risk from other classes. Howver, the plan for week 4 is to put in 1.5-2x more tine into the project to make up for the loses and hopefully get ahead
+    for fuc=ture weeks.
+In Scope Work Items:
+    1) Platform Data Sructure-Complete
+    2) HM Data Structure-complete
+    3) Button Data Structure-complete
+    4) Semaphores -completed
+    5) Mutexes -completed
+    6) Button Task -complete
+    7) Platform Task -conpleted
+    8) Physics Task -in progress
+    9) LCD Task -in progress
+    10) LED Task -not started
+Risk: risk level (1-10) * Probability it will happen
+    Personal Struggles: 7 * 60 = 350 (mitigated)
+    Board Malfunction: 4 * 100 = 400 (accepted)
+    Includes Problems: 8 * 80 = 160 (accepted)
+    Other Classes Interference: 7 * 60 (mitigated)
+      The risk assesment has not changed much because I have accepted or mitigated the risks from the start. However, it seems that the "other classes"
+      risk has increased in percentage as I approach the end of the semester. This weeks objective is to attempt to decrease the probablity of my 
+      other classes interference in order to lower the risk level.
+      I am doing my best to resolve these risks. However, the uncertainty of my personal life and my other classes make it hard to resolve the risks
+      that are not accepted.
+    
