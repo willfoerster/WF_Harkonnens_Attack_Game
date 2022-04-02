@@ -35,6 +35,24 @@ Test Plan and Results:
 Progress of Project week 2:
     At the end of week 2, all of the necesary data structures, OS objects, and tasks have been set up. The meat of the code
     for each task is currently being written. The percentage of work done, I have completed roughly 25% completed.
+In Scope Work Items:
+    1) Platform Data Sructure-Complete
+    2) HM Data Structure-complete
+    3) Button Data Structure-complete
+    4) Semaphores
+    5) Mutexes
+    6) Button Task-complete
+    7) Platform Task
+    8) Physics Task
+    9) LCD Task
+    10) LED Task
+Risk: risk level (1-10) * Probability it will happen
+    Personal Struggles: 7 * 60 = 350 (mitigated)
+    Board Malfunction: 4 * 100 = 400 (accepted)
+    Includes Problems: 8 * 80 = 160 (accepted)
+    Other Classes Interference: 7 * 40 (mitigated)
+    
+    
     
     
  
