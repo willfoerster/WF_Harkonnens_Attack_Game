@@ -58,7 +58,7 @@ Test Plan and Results:
         have yet to implemented because the basice unit tests are not passing yet.
     
 Progress of Project week 4:
-    At the end of week 4, the physics and LCD tasks are still in development. 
+    At the end of week 4, the physics and LCD tasks are still in development. As well as some of the unit tests.
 Summary of effort:
     My current progress puts the project at 50% done. The percentage is way behind expectation due to personal life complecations.
     To make up for being behind, I plan on finishing developing the physics and LCD tasks as well as fully implementing the unit tests
