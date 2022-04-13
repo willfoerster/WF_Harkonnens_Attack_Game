@@ -1,0 +1,87 @@
+Final Project Week 3 Summary
+
+Test Plan and Results:
+    The basis for the unit tests are to ensure the code is working as expected during development.
+    So the unit tests will first be checking proper operation of each individual task. After I know
+    all the tasks are individually working correctly, I will test the whether or not the 2 tasks
+    share the proper data and still function properly. Then I will move to testing more tasks together
+    until the whole system is working properly. 
+    After all the unit tests pass at an acceptable rate, the functional rests will be used to confirm the expected
+    results of the code visually. The functional tests will test if the slider and buttons work correctly in reference
+    to motion of the platform and the HM.
+    
+    Unit Tests:
+    1) [100% Pass] Use an EMF_ASSERT to check the values of the button data structure when pressing button0, button1,
+    and both. The values in the data structure that will be checked are the values of button0 and button1,
+    and the ammount of times each have been pushed. This test will be in the EVEN adn ODD IRQ handlers.
+    2) [40% pass: board malfunction] Use an EMF_ASSERT to check the values of the platform data structure after touching each channel
+    individually and touching one channel on either side. We will be checking the value of the direction, 
+    velocity, and position of the platform.
+    3) [NotRun] I will create a function that checks the physics calculation in the physics task when the HM 
+    is in free fall and when is hits the platform with and without the shield. (the shield will only
+    be simulated, not activated by the button.
+    This function will also be used to test the functionality of the physics task in conjunction with the
+    platform task and button inputs later on.
+    4) [NotRun] Visual Test: Simulate the HM free falling on the LCD display without using any information from the 
+    other tasks
+    5) [NotRun] Visual Test: Using shared data from the platform task. Display the platform as you touch different 
+    channels on the capsense sensor. 
+    6) [NotRun] Using the function from test 3, we will test the phsyics outputs using inputs from the button, then 
+    the slider, then both.
+    7) [NotRun] Visual Test: Since the physics task is working now, check to see if the LCD is displaying the proper 
+    image after the HM hits the platfomr. 
+    8) [NotRun] Use an EFM_ASSERT to check a new HM will be dropped once the origianl one has been bounced off the screen.
+    9) [NotRun] Use an EFM_ASSERT to check if the laser will be activated by pressing button1 and a new HM will be dropped.
+    10) [NotRun] Check to see if the LED0 is correctly displaying the PWM.
+    11) [NotRun] Check to see if the LED1 is correctly displaying the PWM.
+    
+    Functional Tests:
+      (Note: for tests 1-4 the HM falling object doesn't need to be on the screen)
+    1) [NotRun] Using the slider, touch and hold the middle left channel and observe the platform slowly accelerate left.
+    2) [NotRun] Using the slider, touch and hold the far left chennel and observe the platform accelerate left faster than test 1.
+    3) [NotRun] Using the slider, touch and hold the middle right channel and observe the platform slowly accelerate right.
+    4) [NotRun] Using the slider, touch and hold the far right chennel and observe the platform accelerate right faster than test 1.
+    5) [NotRun] Having the HM fall in the center with the platform at rest directly below, observe the HM bounce straight up multiple times.
+                Each bounce should be smaller than the last and the HM should eventiually fall through the platform.
+    6) [NotRun] Using the same set up as step 5, press Button0 at the most 1 second before the HM hits the platform.
+                Repeat this process unitl the HM bounces off the screen and does not come back down.
+    7) [NotRun] With the HM falling in the center straight down, use the slider to hit the HM at an angle with pressing Button0
+                from both the left and right sides. Observe the HM's trajectory bounce in the direction of motion of the platform.
+    8) [NotRun] Repeat tests 5 and 6 but this time observe the left LED. As the HM accelerates or decelerate the led shoulw blink 
+                faster or slower respectively.
+    9) [NotRun] Having the platform start on the left side and the HM falling on the ride side of the screen, without moving the platform
+                observe the right led blinking at an increasing rate as the HM falls to the ground.
+    10) [NotRun]  When the HM starts falling, use Button1 to activate the lazer and observe the HM being destroyed.
+    
+    Test Summary:
+        The unit tests are not fully implented. The ones are implemented are not all paasing at an acceptable rate. The functional tests
+        have yet to implemented because the basice unit tests are not passing yet.
+    
+Progress of Project week 4:
+    At the end of week 4, the physics and LCD tasks are still in development. 
+Summary of effort:
+    My current progress puts the project at 50% done. The percentage is way behind expectation due to personal life complecations.
+    To make up for being behind, I plan on finishing developing the physics and LCD tasks as well as fully implementing the unit tests
+    by the end of week 5. This will allow me to use the functional tests durring week 5 to work out the rest of the bugs and move on
+    to developing the LED task.
+In Scope Work Items:
+    1) Platform Data Sructure-Complete
+    2) HM Data Structure-complete
+    3) Button Data Structure-complete
+    4) Semaphores -completed
+    5) Mutexes -completed
+    6) Button Task -complete
+    7) Platform Task -conpleted
+    8) Physics Task -in progress
+    9) LCD Task -in progress
+    10) LED Task -not started
+Risk: risk level (1-10) * Probability it will happen
+    Personal Struggles: 8 * 60 = 480 (mitigated)
+    Board Malfunction: 4 * 100 = 400 (accepted)
+    Includes Problems: 8 * 80 = 160 (resolved)
+    Other Classes Interference: 7 * 60 (mitigated)
+      The risk assesment has not changed much because I have accepted or mitigated the risks from the start. However, it seems that the "Personal Struggles"
+      risk has increased in risk lecel as I realize the detrement of the problems that arise. This weeks objective is to attempt
+      formulate a plan to deal with the problems that keep popping up in my life.
+      I am doing my best to resolve these risks. However, the uncertainty of my personal life and my other classes make it hard to resolve the risks
+      that are not accepted.
