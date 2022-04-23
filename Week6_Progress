@@ -67,8 +67,8 @@ In Scope Work Items:
     5) Mutexes -completed
     6) Button Task -complete
     7) Platform Task -conpleted
-    8) Physics Task -in progress
-    9) LCD Task -in progress
+    8) Physics Task -completed
+    9) LCD Task -completed
     10) LED Task -not started
 Risk: risk level (1-10) * Probability it will happen
     Personal Struggles: 8 * 60 = 480 (mitigated)
@@ -76,3 +76,5 @@ Risk: risk level (1-10) * Probability it will happen
     Includes Problems: 8 * 80 = 160 (resolved)
     Other Classes Interference: 7 * 60 (mitigated)
       No changes since week 4.
+      COMMENTING ON RISK REGISTER: I am unable to download the risk register spreadsheet because it says its locked on canvas.
+      I'm working to try to get this fixed ASAP. Hopefully I'll have a solution by tomorrow.
