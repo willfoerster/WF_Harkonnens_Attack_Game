@@ -1,1 +1,78 @@
+Final Project Week 6 Summary
 
+Test Plan and Results:
+    The basis for the unit tests are to ensure the code is working as expected during development.
+    So the unit tests will first be checking proper operation of each individual task. After I know
+    all the tasks are individually working correctly, I will test the whether or not the 2 tasks
+    share the proper data and still function properly. Then I will move to testing more tasks together
+    until the whole system is working properly. 
+    After all the unit tests pass at an acceptable rate, the functional rests will be used to confirm the expected
+    results of the code visually. The functional tests will test if the slider and buttons work correctly in reference
+    to motion of the platform and the HM.
+    
+    Unit Tests:
+        Use ctests for all tests:
+        
+    1) [NotRun] test the velocity function for when the ball would be in free fall
+    2) [NotRun] test the velocity function for when the ball bounces off the platform with a dead bounce and with a shield bounce
+    3) [NotRun] test the velocity function for when the platform increases velocity to the left and the right
+    4) [NotRun] test the position function for when the ball would be in free fall
+    5) [NotRun] test the postion function for the platform moving at a constant velocity and when it accelerates from rest for both
+    the left and right directions
+    6) [NotRun] test the postion function for when the ball would hit a wall
+    7) [NotRun] test the postion function for when the platform would hit the wall and either bounce or lose all velocity
+    8) [NotRun] test the bounce function for when the ball is falling straight down and hits a stationary platform with and without 
+    the shield boost
+    9) [NotRun] test the bounce function for when the ball is falling straight down and hits a moving platform (moving both left aand right)
+    10) [NotRun] test the led function for when the ball is free falling on the far right of the screen and the platform is stationary
+    on the far left.
+    11) [NotRun] test the led function with the ball free falling on the far right of the screen and the platform moving at a constant
+    velocity to reach the the ball before it hits the grownd.
+    
+    Functional Tests:
+      (Note: for tests 1-4 the HM falling object doesn't need to be on the screen)
+    1) [NotRun] Using the slider, touch and hold the middle left channel and observe the platform slowly accelerate left.
+    2) [NotRun] Using the slider, touch and hold the far left chennel and observe the platform accelerate left faster than test 1.
+    3) [NotRun] Using the slider, touch and hold the middle right channel and observe the platform slowly accelerate right.
+    4) [NotRun] Using the slider, touch and hold the far right chennel and observe the platform accelerate right faster than test 1.
+    5) [NotRun] Having the HM fall in the center with the platform at rest directly below, observe the HM bounce straight up multiple times.
+                Each bounce should be smaller than the last and the HM should eventiually fall through the platform.
+    6) [NotRun] Using the same set up as step 5, press Button0 at the most 1 second before the HM hits the platform.
+                Repeat this process unitl the HM bounces off the screen and does not come back down.
+    7) [NotRun] With the HM falling in the center straight down, use the slider to hit the HM at an angle with pressing Button0
+                from both the left and right sides. Observe the HM's trajectory bounce in the direction of motion of the platform.
+    8) [NotRun] Repeat tests 5 and 6 but this time observe the left LED. As the HM accelerates or decelerate the led shoulw blink 
+                faster or slower respectively.
+    9) [NotRun] Having the platform start on the left side and the HM falling on the ride side of the screen, without moving the platform
+                observe the right led blinking at an increasing rate as the HM falls to the ground.
+    10) [NotRun]  When the HM starts falling, use Button1 to activate the lazer and observe the HM being destroyed.
+    
+    Test Summary:
+       I have changed my unit test decription and am working on developing these tests. However, I think at this point it might be
+       more important to finish the developement of the project without the unit tests since most my functions are working properly.
+       I am planning on testing all of my functional tests on either 4/23 or 4/24.
+    
+Progress of Project week 6:
+    At the end of week 6, the physics and LCD tasks are almost completed. The goal for this weekend is to debug using the functional tests
+    and finsh the LED task which will be the last part of the project.
+Summary of effort:
+    My current progress puts the project at 80% done. The percentage is still behind expectation because at this point the project should 
+    be fully finished with minor debugging and tweaking left. To make up for this, I will be spending at least 15 hours this weekend to 
+    get the full project ready by Monday so I can make minor adjustments on monday and demo on Tuesday.
+In Scope Work Items:
+    1) Platform Data Sructure-Complete
+    2) HM Data Structure-complete
+    3) Button Data Structure-complete
+    4) Semaphores -completed
+    5) Mutexes -completed
+    6) Button Task -complete
+    7) Platform Task -conpleted
+    8) Physics Task -in progress
+    9) LCD Task -in progress
+    10) LED Task -not started
+Risk: risk level (1-10) * Probability it will happen
+    Personal Struggles: 8 * 60 = 480 (mitigated)
+    Board Malfunction: 4 * 100 = 400 (accepted)
+    Includes Problems: 8 * 80 = 160 (resolved)
+    Other Classes Interference: 7 * 60 (mitigated)
+      No changes since week 4.
