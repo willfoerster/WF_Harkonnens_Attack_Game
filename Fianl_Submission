@@ -3,10 +3,8 @@ Final Project Summary
 
 Test Plan and Results:
     The basis for the unit tests are to ensure the code is working as expected during development.
-    So the unit tests will first be checking proper operation of each individual task. After I know
-    all the tasks are individually working correctly, I will test the whether or not the 2 tasks
-    share the proper data and still function properly. Then I will move to testing more tasks together
-    until the whole system is working properly. 
+    So the unit tests will be checking the veloctiy, position, and bounce functions to ensure that 
+    they produce the expected values before implementing theme into the physics task.
     After all the unit tests pass at an acceptable rate, the functional rests will be used to confirm the expected
     results of the code visually. The functional tests will test if the slider and buttons work correctly in reference
     to motion of the platform and the HM.
@@ -20,8 +18,8 @@ Test Plan and Results:
     4) [NotRun] test the position function for when the ball would be in free fall
     5) [NotRun] test the postion function for the platform moving at a constant velocity and when it accelerates from rest for both
     the left and right directions
-    6) [NotRun] test the postion function for when the ball would hit a wall
-    7) [NotRun] test the postion function for when the platform would hit the wall and either bounce or lose all velocity
+    6) [NotRun] test the position function for when the ball would hit a wall
+    7) [NotRun] test the position function for when the platform would hit the wall and either bounce or lose all velocity
     8) [NotRun] test the bounce function for when the ball is falling straight down and hits a stationary platform with and without 
     the shield boost
     9) [NotRun] test the bounce function for when the ball is falling straight down and hits a moving platform (moving both left aand right)
@@ -64,7 +62,7 @@ Test Plan and Results:
         the LED1 pwm being related to the distance between the platform and the HM instead of the percent of max forced required for the platform 
         to reach the HM before it hits the ground. 
 In Scope Work Items:
-    1) Platform Data Sructure-Complete
+    1) Platform Data Sructure-complete
     2) HM Data Structure-complete
     3) Button Data Structure-complete
     4) Semaphores -completed
@@ -73,13 +71,65 @@ In Scope Work Items:
     7) Platform Task -conpleted
     8) Physics Task -completed
     9) LCD Task -completed
-    10) LED Task -not started
+    10) LED0 Task -completed
+    11) LED1 Task -completed
 Analysis:
     RT Tasks:
-        The priority of the tasks ranged from 18 to 22. The platform task was 1 in order to attempt to fix the issue of the slider getting 
+            The priority of the tasks ranged from 18 to 22. The platform task was 1 in order to attempt to fix the issue of the slider getting 
         stuck in the left or right directions. The button, physics , and lcd tasks all had the same priority of 20. The two led tasks had 
         a priority of 21 and the idle task had a priority of 22. All of these priorities were set in order to avoid the possiblity of a task
         missing its deadline. These deadlines were based on the frequency at which each task needed to be called and the the time it would take
-        for all tasks to complete before the next task cycle. This is hard to calculate because each task would not run for the same amount of 
-        time each time it was called. For example
+        for all tasks to complete before the next task cycle. This is hard to calculate because each task had a variable execution time.
+        For example, the physics task would take longer if it had to calculate a bounce compared to if it only needed to calculate the current 
+        possition and velocities of the HM and the platform (confirmed by SEGGER). However, looking at SEGGER, each task that is run at a constant
+        frequency does not miss its deadline. One curious thing to note while looking at segger is the amount of CPU Load and time the led1 task 
+        takes up. I suspect this is because of the variable frequency at which it is called. The power consumption of the led1 task makes the code
+        power ineffecient, but it does not interfere with the other tasks deadlines because it is the "lowest" prioty besides idle. With the data,
+        collected from SEGGER, it looks like all tasks are opperating correctly and not missing there deadlines.
+    Code Space:
+            The code space of my project is not the prettiest as of right now because I have not cleaned up the extra code(commented out or not)
+        lying around the project. Overall, the amount of functional code, that I wrote, through out the project is roughly 1300-1500 lines of
+        code. The code can be cleaned up though using macros and global variables as well as creating more functions in another module to 
+        make the code more readable. Furthermore, the private ConfigData struct in app.c was not holding the correct values which also forced
+        me to make calcuations in the code that do not make sense to a user. Going forward, I would fix the ConfigData and implement the other
+        suggestions of macros, global variables, and more functions to make the code more readable and scalable.
+    Physics Update:
+            In my implementation of the physics function, I did not use any libraries to calculate the position, velocity, or kenetic energy.
+        For each function I coded, I used basic knowledge of physics kenematics to calculate these values. Most of my functions do not have
+        acceleration because it was not necessary for my implementation. I chose to have a velocity function that would calculate a new velocity 
+        baced on the incial veolcity, time, force, and mass (F=ma). This allowed me to update the velocity of the platform based on the mass
+        and the force applied (capsense) to it, allowing changes in mass of the platform to effect its velocity. On the otherhand, I did use 
+        acceleration to calculate the y-velocity of the HM because gravity was in the configuration data. Since I updated the y-velocity of 
+        the HM and velocity of the platfrom for each time increment in the physics task, it was not necessary to have acceleration in my position
+        function. Another function I created calculated the velocity of the ball after an impact with the platform. The bounce function calls 
+        another function to calculate the kenetic energy of the ball and multiplies it by a percent change in kenetic energy based on if the 
+        shield was activated or not. Then the function calculates the new velocity of the HM by taking the inverse of the kenetic energy physics
+        equation. 
+            One limitations that I had to deal with were the large values for position and velocity. In the function that calculates kenetic energy,
+        I had to use a long long int because the kenetic energy value would be so large that not even a long int would hold the value. This 
+        definitly makes the code less efficient, so in the future I might look to find better implementation. Another limitation I had was using
+        floats to calculate values. For an unknown reason, I was only able to perform on math calculation when assigning a value to a float. For 
+        example, instead of writing a = (b-c)/d I would have to write a = b-c then a = a/d. This may seem like a trivial inconvience, but I think
+        that it might allude to other unknown problems with the efficiency of the code or the speed of the CPU that may be causing outher issues
+        at run time.
+    Scaling of Variable Space:
+            When playing around with values for gravity and platform mass. I found that the gravity only works for values less than 12000mm/s^2
+        and is only playable between 7000-12000. Above 12000 the bounce mechanic stops working and below 7000 the ball takes too long to hit the
+        platform or ground. For the platform mass, I found that the platform works in all ranges but is playable between 10-2000kg. Taking a
+        broader view of the configureation data and problems discused earier with very large numbers, values that are significantly large when
+        used for configuration data like 100,000cm for the canyan size should definitly be no larger then 100,000 or else the variables will
+        not have enough space to hold values for calculations or even general data. In the future, I will try to scale down any configuration
+        data that is given to avoid problems and increase code efficiency by using smaller numbers.
+    Future:
+            If I had two more weeks to work on this project, I would start by cleaning up the code and fixing the ConfigData struct to allow
+            myself the ability to understand my own code better and to debug easier. After the cleaning process is over, I would try to change 
+            the implement of the PWM frequencies for led1 from being an inverse function of the distance from the platform to the HM to 
+            having it be a function of the perent of max velocity it would take for the platform to reach the HM before it hits the ground. 
+           At this point, I would have meet all of the project specifications, but I would not stop there. I would add some more graphics effects
+           to the lazer as well as show platform health, shield charge/recharge bar, number of lives, and an end game cut scene (if I had time).
+           Finally, I would implement a user menue. I would allow the user to select an option for difficulty before the game starts. The menue 
+           would be navigated by touching the left or right of the slider and to choos and option the user would press button0. I think all of these
+           changes are definitely plausible to be made in the next 2 weeks. 
+            
+    
         
