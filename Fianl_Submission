@@ -76,4 +76,10 @@ In Scope Work Items:
     10) LED Task -not started
 Analysis:
     RT Tasks:
+        The priority of the tasks ranged from 18 to 22. The platform task was 1 in order to attempt to fix the issue of the slider getting 
+        stuck in the left or right directions. The button, physics , and lcd tasks all had the same priority of 20. The two led tasks had 
+        a priority of 21 and the idle task had a priority of 22. All of these priorities were set in order to avoid the possiblity of a task
+        missing its deadline. These deadlines were based on the frequency at which each task needed to be called and the the time it would take
+        for all tasks to complete before the next task cycle. This is hard to calculate because each task would not run for the same amount of 
+        time each time it was called. For example
         
