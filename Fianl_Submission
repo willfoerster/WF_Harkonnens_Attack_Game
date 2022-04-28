@@ -1,1 +1,79 @@
 
+Final Project Summary
+
+Test Plan and Results:
+    The basis for the unit tests are to ensure the code is working as expected during development.
+    So the unit tests will first be checking proper operation of each individual task. After I know
+    all the tasks are individually working correctly, I will test the whether or not the 2 tasks
+    share the proper data and still function properly. Then I will move to testing more tasks together
+    until the whole system is working properly. 
+    After all the unit tests pass at an acceptable rate, the functional rests will be used to confirm the expected
+    results of the code visually. The functional tests will test if the slider and buttons work correctly in reference
+    to motion of the platform and the HM.
+    
+    Unit Tests:
+        Use ctests for all tests:
+        
+    1) [NotRun] test the velocity function for when the ball would be in free fall
+    2) [NotRun] test the velocity function for when the ball bounces off the platform with a dead bounce and with a shield bounce
+    3) [NotRun] test the velocity function for when the platform increases velocity to the left and the right
+    4) [NotRun] test the position function for when the ball would be in free fall
+    5) [NotRun] test the postion function for the platform moving at a constant velocity and when it accelerates from rest for both
+    the left and right directions
+    6) [NotRun] test the postion function for when the ball would hit a wall
+    7) [NotRun] test the postion function for when the platform would hit the wall and either bounce or lose all velocity
+    8) [NotRun] test the bounce function for when the ball is falling straight down and hits a stationary platform with and without 
+    the shield boost
+    9) [NotRun] test the bounce function for when the ball is falling straight down and hits a moving platform (moving both left aand right)
+    10) [NotRun] test the led function for when the ball is free falling on the far right of the screen and the platform is stationary
+    on the far left.
+    11) [NotRun] test the led function with the ball free falling on the far right of the screen and the platform moving at a constant
+    velocity to reach the the ball before it hits the grownd.
+    
+    Functional Tests:
+      (Note: for tests 1-4 the HM falling object doesn't need to be on the screen)
+    1) [Run: 66% Pass] Using the slider, touch and hold the middle left channel and observe the platform slowly accelerate left.
+    2) [Run: 66% Pass] Using the slider, touch and hold the far left chennel and observe the platform accelerate left faster than test 1.
+    3) [Run: 66% Pass] Using the slider, touch and hold the middle right channel and observe the platform slowly accelerate right.
+    4) [Run: 66% Pass] Using the slider, touch and hold the far right chennel and observe the platform accelerate right faster than test 1.
+    5) [Run: 100% Pass] Having the HM fall in the center with the platform at rest directly below, observe the HM bounce straight up multiple times.
+                Each bounce should be smaller than the last and the HM should eventiually fall through the platform.
+    6) [Run: 100% Pass] Using the same set up as step 5, press Button0 at the most .5 seconds before the HM hits the platform.
+                Repeat this process unitl the HM bounces off the screen and does not come back down.
+    7) [Run: 100% Pass] With the HM falling in the center straight down, use the slider to hit the HM at an angle with pressing Button0
+                from both the left and right sides. Observe the HM's trajectory bounce in the direction of motion of the platform.
+    8) [Run: 100% Pass] Repeat tests 5 and 6 but this time observe the right LED. As the HM  kenetic energy increase or decreases the led should blink 
+                faster or slower respectively.
+    9) [Run: 100% Pass] As you play the game observe the left LED increase in pwm frequency propartional to the distance between the platform 
+                and the ball
+    10) [Run: 100% Pass]  When the HM starts falling, use Button1 to activate the lazer and observe the HM being destroyed.
+    
+    Test Summary:
+       Due to complications during the development of the unit tests and the timeline of the project, I was not able to develope my unit tests. 
+       This set me back a little because I was not able to tests my physics calculations prior to the developemnt of the physics task. So in order
+       to test the cutting points described in the unit test portion, I had to test through observation of the code and variable values. On the 
+       other hand, I was able to get the project fully functional and pass almost all of the functional tests at 100% pass/fail rate. However,
+       the first four functional tests only passed at a 66% pass/fail rate because the slider will randomly get stuck in a left or right possition
+       increasing the velocity of the platform to maximum velocity. I attempted to fix this issue through changing the task priority and changing
+       frequency of the task associated with the slider, but these attempts did not give any better results.
+    
+    Project Summary:
+        As of demo day, my project is fully function and playable with accouple bugs. The game will freeze or the slider will get stuck in a certain 
+        direction, however, this does not effect play too much because you can reset the game if these issues happen to resolve them. The project has
+        fulfilled all the project specifications to the best of my ability. Some of the things that are different from the project specifications are 
+        the LED1 pwm being related to the distance between the platform and the HM instead of the percent of max forced required for the platform 
+        to reach the HM before it hits the ground. 
+In Scope Work Items:
+    1) Platform Data Sructure-Complete
+    2) HM Data Structure-complete
+    3) Button Data Structure-complete
+    4) Semaphores -completed
+    5) Mutexes -completed
+    6) Button Task -complete
+    7) Platform Task -conpleted
+    8) Physics Task -completed
+    9) LCD Task -completed
+    10) LED Task -not started
+Analysis:
+    RT Tasks:
+        
